@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Module file for Social Conversational Form.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * {@inheritdoc}
+ */
+function social_conversational_form_form_user_register_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  $form['#attached']['library'][] = 'social_conversational_form/social_conversational_form';
+}

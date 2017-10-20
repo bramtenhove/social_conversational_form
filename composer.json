@@ -1,0 +1,5 @@
+{
+  "name": "social/social_conversational_form",
+  "description": "Transforms selected forms into a conversation.",
+  "type": "drupal-module",
+}

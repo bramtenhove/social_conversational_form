@@ -1,0 +1,4 @@
+social_conversational_form:
+  version: VERSION
+  js:
+    js/social_conversational_form.js: {}

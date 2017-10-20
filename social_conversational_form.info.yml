@@ -1,0 +1,5 @@
+name: Social Conversational Form
+description: Transforms selected forms into a conversation.
+type: module
+core: 8.x
+package: Social Experimental

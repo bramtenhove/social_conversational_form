@@ -18,7 +18,25 @@
   Drupal.behaviors.social_tour = {
     attach: function (context) {
       $('body').once('social_conversational_form').each(function () {
-        console.log('Initial load.');
+        // Initiate conversational form.
+        $("form.user-register-form").conversationalForm({
+          robotImage: '/profiles/contrib/social/themes/socialblue/favicon.ico',
+          userImage: '/profiles/contrib/social/themes/socialbase/assets/images/icons/icon-account_circle.svg',
+          submitCallback: function(){
+            this.addRobotChatResponse("Alright, thanks for registering {firstname}");
+            this.formEl.submit();
+          },
+          userInterfaceOptions:{
+            controlElementsInAnimationDelay: 150,
+            robot: {
+              robotResponseTime: 250,
+              chainedResponseTime: 750
+            },
+            user:{
+              showThumb: false
+            }
+          }
+        });
       });
     }
   };

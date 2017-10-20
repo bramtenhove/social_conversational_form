@@ -1,4 +1,6 @@
 social_conversational_form:
-  version: VERSION
+  css:
+    /libraries/conversational-form/dist/conversational-form.min.css: { minified: true }
   js:
     js/social_conversational_form.js: {}
+    /libraries/conversational-form/dist/conversational-form.min.js: { minified: true }

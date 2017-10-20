@@ -13,5 +13,35 @@ use Drupal\Core\Form\FormStateInterface;
  * {@inheritdoc}
  */
 function social_conversational_form_form_user_register_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  // Set the context for the conversational form.
+  $form['#prefix'] = '<div cf-context>';
+  $form['#suffix'] = '</div>';
+  // Attach the library.
   $form['#attached']['library'][] = 'social_conversational_form/social_conversational_form';
+
+  $form['account']['mail']['#attributes']['cf-questions'] = 'Hi there {firstname}!&&What is your email address?';
+  $form['account']['name']['#attributes']['cf-questions'] = 'What do you want your username to be?';
+
+  $form['firstname'] = array(
+    '#type' => 'textfield',
+    '#title' => t('First name'),
+    '#required' => FALSE,
+    '#weight' => -100,
+    '#attributes' => [
+      'id' => 'firstname',
+      'cf-questions' => "Hi there!&&Nice to see you want to register at our community.&&What is your first name?"],
+      'cf-error' => 'Make sure your first name does not contain numbers',
+      'pattern' => '^[a-zA-Z]+$',
+  );
+
+  $form['profession'] = [
+    '#type' => 'select',
+    '#title' => t("What is your profession?"),
+    '#options' => [
+      '1' => t('Icecream truck driver'),
+      '2' => t('Badminton supporter'),
+      '3' => t('Stay at home mom'),
+      '4' => t('Stay at home dad'),
+    ],
+  ];
 }

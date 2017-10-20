@@ -16,9 +16,14 @@ function social_conversational_form_form_user_register_form_alter(array &$form, 
   // Set the context for the conversational form.
   $form['#prefix'] = '<div cf-context>';
   $form['#suffix'] = '</div>';
-  // Attach the library.
-  $form['#attached']['library'][] = 'social_conversational_form/social_conversational_form';
 
+  if ($_GET['conv'] == 'off') {
+
+  }
+  else {
+    // Attach the library.
+    $form['#attached']['library'][] = 'social_conversational_form/social_conversational_form';
+  }
   $form['account']['mail']['#attributes']['cf-questions'] = 'Hi there {firstname}!&&What is your email address?';
   $form['account']['name']['#attributes']['cf-questions'] = 'What do you want your username to be?';
 
@@ -31,7 +36,6 @@ function social_conversational_form_form_user_register_form_alter(array &$form, 
       'id' => 'firstname',
       'cf-questions' => "Hi there!&&Nice to see you want to register at our community.&&What is your first name?"],
       'cf-error' => 'Make sure your first name does not contain numbers',
-      'pattern' => '^[a-zA-Z]+$',
   );
 
   $form['profession'] = [
